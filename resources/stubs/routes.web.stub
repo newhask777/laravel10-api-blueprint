@@ -1,0 +1,11 @@
+<?php
+
+Route::group(['prefix' => 'DummyRoutePrefix'], function () {
+    Route::get('/', [DummyClass::class, 'index'])->middleware()->name('DummyRoutePrefix.index');
+    Route::get('/create', [DummyClass::class, 'create'])->middleware()->name('DummyRoutePrefix.create');
+    Route::post('/', [DummyClass::class, 'store'])->middleware()->name('DummyRoutePrefix.store');
+    Route::get('/{DummyModelVariable}', [DummyClass::class, 'show'])->middleware()->name('DummyRoutePrefix.read');
+    Route::get('/edit/{DummyModelVariable}', [DummyClass::class, 'edit'])->middleware()->name('DummyRoutePrefix.edit');
+    Route::put('/{DummyModelVariable}', [DummyClass::class, 'update'])->middleware()->name('DummyRoutePrefix.update');
+    Route::delete('/{DummyModelVariable}', [DummyClass::class, 'destroy'])->middleware()->name('DummyRoutePrefix.delete');
+});
