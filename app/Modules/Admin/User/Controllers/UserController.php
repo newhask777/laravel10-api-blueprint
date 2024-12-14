@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Test\Controllers;
+namespace App\Modules\Admin\User\Controllers;
 
-use App\Modules\Test\Models\Test;
+use App\Modules\Admin\User\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modules\Test\Models\Test  $test
+     * @param  \App\Modules\Admin\User\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Test $test)
+    public function show(User $user)
     {
         //
     }
@@ -53,10 +53,10 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modules\Test\Models\Test  $test
+     * @param  \App\Modules\Admin\User\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Test $test)
+    public function edit(User $user)
     {
         //
     }
@@ -65,10 +65,10 @@ class TestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Modules\Test\Models\Test  $test
+     * @param  \App\Modules\Admin\User\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Test $test)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -76,10 +76,10 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Modules\Test\Models\Test  $test
+     * @param  \App\Modules\Admin\User\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Test $test)
+    public function destroy(User $user)
     {
         //
     }

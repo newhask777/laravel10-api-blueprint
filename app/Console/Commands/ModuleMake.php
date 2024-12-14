@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class ModuleMake extends Command
 {
+
     private $files;
 
     /**
@@ -15,7 +16,14 @@ class ModuleMake extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {name} {--all} {--migration} {--vue} {--view} {--controller} {--model} {--api}';
+    protected $signature = 'make:module {name}
+                                                   {--all}
+                                                   {--migration}
+                                                   {--vue}
+                                                   {--view}
+                                                   {--controller}
+                                                   {--model}
+                                                   {--api}';
 
     /**
      * The console command description.
@@ -38,10 +46,12 @@ class ModuleMake extends Command
 
     /**
      * Execute the console command.
+     *
+     * @return int
      */
     public function handle()
     {
-        if($this->option('all')){
+        if($this->option('all')) {
             $this->input->setOption('migration', true);
             $this->input->setOption('vue', true);
             $this->input->setOption('view', true);
@@ -50,35 +60,33 @@ class ModuleMake extends Command
             $this->input->setOption('api', true);
         }
 
-        if( $this->option('model')){
+        if($this->option('model')) {
             $this->createModel();
         }
 
-        if( $this->option('controller')){
+        if($this->option('controller')) {
             $this->createController();
         }
 
-        if( $this->option('api')){
+        if($this->option('api')) {
             $this->createApiController();
         }
 
-        if( $this->option('migration')){
+        if($this->option('migration')) {
             $this->createMigration();
         }
 
-        if( $this->option('vue')){
+        if($this->option('vue')) {
             $this->createVueComponent();
         }
 
-        if( $this->option('view')){
+        if($this->option('view')) {
             $this->createView();
         }
+
     }
 
-    /**
-     * @return void
-     */
-    private function createModel(): void
+    private function createModel()
     {
         $model = Str::singular(Str::studly(class_basename($this->argument('name'))));
 
@@ -349,7 +357,7 @@ class ModuleMake extends Command
                     'DummyModelVariable',
                 ],
                 [
-                    'Api\\'.$controller.'Controller',
+                    $controller.'Controller',
                     Str::plural(Str::snake(lcfirst($modelName), '-')),
                     lcfirst($modelName)
                 ],
@@ -378,5 +386,6 @@ class ModuleMake extends Command
     {
         return $this->files->exists($path);
     }
+
 
 }

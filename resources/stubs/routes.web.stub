@@ -1,11 +1,14 @@
 <?php
 
-Route::group(['prefix' => 'DummyRoutePrefix'], function () {
-    Route::get('/', [DummyClass::class, 'index'])->middleware()->name('DummyRoutePrefix.index');
-    Route::get('/create', [DummyClass::class, 'create'])->middleware()->name('DummyRoutePrefix.create');
-    Route::post('/', [DummyClass::class, 'store'])->middleware()->name('DummyRoutePrefix.store');
-    Route::get('/{DummyModelVariable}', [DummyClass::class, 'show'])->middleware()->name('DummyRoutePrefix.read');
-    Route::get('/edit/{DummyModelVariable}', [DummyClass::class, 'edit'])->middleware()->name('DummyRoutePrefix.edit');
-    Route::put('/{DummyModelVariable}', [DummyClass::class, 'update'])->middleware()->name('DummyRoutePrefix.update');
-    Route::delete('/{DummyModelVariable}', [DummyClass::class, 'destroy'])->middleware()->name('DummyRoutePrefix.delete');
+use App\Modules\Admin\User\Controllers\DummyClass;
+use Illuminate\Support\Facades\Route;
+
+Route::group(['prefix' => 'admin',  'middleware' => []], function(){
+    Route::get('/', [DummyClass::class, 'index'])->name('DummyRoutePrefix.index');
+    Route::get('/create', [DummyClass::class, 'create'])->name('DummyRoutePrefix.create');
+    Route::post('/', [DummyClass::class, 'store'])->name('DummyRoutePrefix.store');
+    Route::get('/{DummyModelVariable}', [DummyClass::class, 'show'])->name('DummyRoutePrefix.read');
+    Route::get('/edit/{DummyModelVariable}', [DummyClass::class, 'edit'])->name('DummyRoutePrefix.edit');
+    Route::put('/{DummyModelVariable}', [DummyClass::class, 'update'])->name('DummyRoutePrefix.update');
+    Route::delete('/{DummyModelVariable}', [DummyClass::class, 'destroy'])->name('DummyRoutePrefix.delete');
 });

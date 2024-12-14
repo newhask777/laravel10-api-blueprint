@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Test\Models;
+namespace App\Modules\Admin\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Test extends Model
+class User extends Model
 {
     use HasFactory;
 }
