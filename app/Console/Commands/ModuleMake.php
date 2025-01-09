@@ -360,7 +360,7 @@ class ModuleMake extends Command
                     'DummyModelVariable',
                 ],
                 [
-                    "App\\Modules\\".trim($this->argument('name'))."\\Controllers\\" . $controller.'Controller',
+                    "App\\Modules\\".trim($this->argument('name'))."\\Controllers\\Api\\" . $controller.'Controller',
                     $controller.'Controller',
                     Str::plural(Str::snake(lcfirst($modelName), '-')),
                     lcfirst($modelName)

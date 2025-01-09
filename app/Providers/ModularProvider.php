@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Route;
+
 
 class ModularProvider extends ServiceProvider
 {
@@ -53,6 +54,8 @@ class ModularProvider extends ServiceProvider
 
             });
         }
+
+        $this->app['view']->addNamespace('Pub', base_path().'/resources/views/Pub');
     }
 
     private function getWebRoutes($mod, $sub, $relativePath, $path)

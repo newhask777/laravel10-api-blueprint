@@ -1,1 +1,0 @@
-<p>Admin Index</p>

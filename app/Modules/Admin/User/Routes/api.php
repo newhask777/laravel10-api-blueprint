@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\Admin\User\Controllers\UserController;
+use App\Modules\Admin\User\Controllers\Api\UserController;
 
 Route::group(['prefix' => 'admin',  'middleware' => []], function(){
     Route::get('/', [UserController::class, 'index'])->name('api.users.index');
