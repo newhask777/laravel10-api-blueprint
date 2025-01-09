@@ -320,11 +320,13 @@ class ModuleMake extends Command
 
             $stub = str_replace(
                 [
+                    'DummyControllerNamespace',
                     'DummyClass',
                     'DummyRoutePrefix',
                     'DummyModelVariable',
                 ],
                 [
+                    "App\\Modules\\".trim($this->argument('name'))."\\Controllers\\" . $controller.'Controller',
                     $controller.'Controller',
                     Str::plural(Str::snake(lcfirst($modelName), '-')),
                     lcfirst($modelName)
@@ -352,11 +354,13 @@ class ModuleMake extends Command
 
             $stub = str_replace(
                 [
+                    'DummyControllerNamespace',
                     'DummyClass',
                     'DummyRoutePrefix',
                     'DummyModelVariable',
                 ],
                 [
+                    "App\\Modules\\".trim($this->argument('name'))."\\Controllers\\" . $controller.'Controller',
                     $controller.'Controller',
                     Str::plural(Str::snake(lcfirst($modelName), '-')),
                     lcfirst($modelName)

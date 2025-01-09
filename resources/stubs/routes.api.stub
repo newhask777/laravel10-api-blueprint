@@ -1,7 +1,7 @@
 <?php
 
-use App\Modules\Admin\User\Controllers\Api\DummyClass;
 use Illuminate\Support\Facades\Route;
+use DummyControllerNamespace;
 
 Route::group(['prefix' => 'admin',  'middleware' => []], function(){
     Route::get('/', [DummyClass::class, 'index'])->name('api.DummyRoutePrefix.index');
