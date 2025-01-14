@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectedTo = '/admin/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
 
     public function __construct()
@@ -24,4 +24,5 @@ class LoginController extends Controller
 
         return view('Pub::Auth.login', []);
     }
+
 }
