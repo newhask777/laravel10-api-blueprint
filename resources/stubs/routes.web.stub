@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use DummyControllerNamespace;
 
-Route::group(['prefix' => 'admin',  'middleware' => []], function(){
+Route::group(['prefix' => 'DummyRoutePrefix',  'middleware' => []], function(){
     Route::get('/', [DummyClass::class, 'index'])->name('DummyRoutePrefix.index');
     Route::get('/create', [DummyClass::class, 'create'])->name('DummyRoutePrefix.create');
     Route::post('/', [DummyClass::class, 'store'])->name('DummyRoutePrefix.store');
