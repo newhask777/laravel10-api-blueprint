@@ -82,7 +82,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
+    'locales' => ['ru', 'en'],
 
     /*
     |--------------------------------------------------------------------------
@@ -199,6 +200,8 @@ return [
          *  Custom Providers
          */
         App\Providers\ModularProvider::class,
+
+        App\Services\Localization\LocalizationServiceProvider::class,
 
     ],
 

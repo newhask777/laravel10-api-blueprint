@@ -11,10 +11,12 @@ class DashboardController extends Base
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function index()
     {
+        dd(__('admin.dashboard_title'));
+
         $this->title = __("admin.Dashboard_title_page");
         $this->content = view('Admin::Dashboard.index')->with([
             'title' => $this->title
