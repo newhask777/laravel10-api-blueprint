@@ -14,7 +14,7 @@ return [
 
     'modules' => [
         'Admin' => [
-            'Test',
+            'Menu',
             'Dashboard',
             'User'
         ],

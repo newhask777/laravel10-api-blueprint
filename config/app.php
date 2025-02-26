@@ -200,8 +200,8 @@ return [
          *  Custom Providers
          */
         App\Providers\ModularProvider::class,
-
         App\Services\Localization\LocalizationServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
 
     ],
 
@@ -218,6 +218,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Menu'      => Lavary\Menu\Facade::class,
     ])->toArray(),
 
 ];

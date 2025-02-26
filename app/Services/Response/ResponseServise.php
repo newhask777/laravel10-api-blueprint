@@ -6,7 +6,7 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 
 
-class ResponseService
+class ResponseServise
 {
     private static function responseParams(string|bool $status, array $errors = [], array $data = []): array
     {

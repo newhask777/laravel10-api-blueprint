@@ -2,7 +2,7 @@
 
 namespace App\Services\Requests;
 
-use App\Services\Response\ResponseService;
+use App\Services\Response\ResponseServise;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -28,7 +28,7 @@ class ApiRequest extends FormRequest
 
 
         throw new HttpResponseException(
-            ResponseService::sendJsonResponse(
+            ResponseServise::sendJsonResponse(
                 false,
                 JsonResponse::HTTP_FORBIDDEN,
                 $errors,
