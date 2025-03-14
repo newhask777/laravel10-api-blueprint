@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'dashboard_title' =>  "Главная"
+    'dashboard_title' =>  "Главная",
 ];

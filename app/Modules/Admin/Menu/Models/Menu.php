@@ -18,7 +18,7 @@ class Menu extends Model
     public function scopeFrontMenu($query, User $user)
     {
         return $query->where('type', self::MENU_TYPE_FRONT)
-//            ->whereHas('perms', function($q) use($user) {
+//            ->whereHas('perms', function($q) use ($user) {
 //
 //            })
         ;
