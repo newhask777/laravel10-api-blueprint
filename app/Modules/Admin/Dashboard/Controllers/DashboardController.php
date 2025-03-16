@@ -15,7 +15,7 @@ class DashboardController extends Base
      */
     public function index()
     {
-//        dd(__('admin.dashboard_title'));
+//        dd(__DIR__ . '\storage\oauth-public.key');
 
         $this->title = __('admin.dashboard_title');
         $this->content = view('Admin::Dashboard.index')->with([

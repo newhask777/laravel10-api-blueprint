@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Admin\Role\Controllers\PermissionsController;
 use Illuminate\Support\Facades\Route;
 use App\Modules\Admin\Role\Controllers\RoleController;
 
@@ -15,11 +16,11 @@ Route::group(['prefix' => 'roles',  'middleware' => []], function(){
 
 
 Route::group(['prefix' => 'permissions',  'middleware' => []], function(){
-    Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
-    Route::get('/create', [PermissionController::class, 'create'])->name('permissions.create');
-    Route::post('/', [PermissionController::class, 'store'])->name('permissions.store');
-    Route::get('/{role}', [PermissionController::class, 'show'])->name('permissions.read');
-    Route::get('/edit/{role}', [PermissionController::class, 'edit'])->name('permissions.edit');
-    Route::put('/{role}', [PermissionController::class, 'update'])->name('permissions.update');
-    Route::delete('/{role}', [PermissionController::class, 'destroy'])->name('permissions.delete');
+    Route::get('/', [PermissionsController::class, 'index'])->name('permissions.index');
+    Route::get('/create', [PermissionsController::class, 'create'])->name('permissions.create');
+    Route::post('/', [PermissionsController::class, 'store'])->name('permissions.store');
+    Route::get('/{role}', [PermissionsController::class, 'show'])->name('permissions.read');
+    Route::get('/edit/{role}', [PermissionsController::class, 'edit'])->name('permissions.edit');
+    Route::put('/{role}', [PermissionsController::class, 'update'])->name('permissions.update');
+    Route::delete('/{role}', [PermissionsController::class, 'destroy'])->name('permissions.delete');
 });

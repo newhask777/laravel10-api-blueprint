@@ -6,7 +6,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class AdminPolicy
+class RolePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,41 +19,49 @@ class AdminPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Admin $admin): bool
+    public function view(): bool
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(): bool
     {
-        //
+        return true;
+    }
+
+    /**
+     * Determine whether the user can create models.
+     */
+    public function edit(): bool
+    {
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Admin $admin): bool
+    public function update(): bool
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Admin $admin): bool
+    public function delete(): bool
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Admin $admin): bool
+    public function restore(): bool
     {
-        //
+        return true;
     }
 
     /**
