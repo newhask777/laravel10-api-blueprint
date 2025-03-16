@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('permission_menu', function (Blueprint $table) {
             //
 //            $table->integer('permission_id')->unsigned();
-            $table->foreignId('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+            $table->foreignId('permission_id')->constrained()->cascadeOnDelete();
 
 //            $table->bigInteger('menu_id')->unsigned();
-            $table->foreignId('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
 
         });
     }

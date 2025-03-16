@@ -15,10 +15,10 @@ class CreateAdminUser extends Seeder
     {
         DB::table('users')->insert(
             [
-                'firstname' => 'admin',
+                'firstname' => 'admin2',
                 'lastname' => 'admin',
                 'phone' => '111111',
-                'email' => 'admin@admin.com',
+                'email' => 'admin2@admin.com',
                 'password' => bcrypt('12345678'),
                 'status' => '1'
             ]

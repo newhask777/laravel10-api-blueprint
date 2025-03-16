@@ -1,18 +1,25 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: note
+ * Date: 24.11.2020
+ * Time: 22:51
+ */
 
 namespace App\Modules\Admin\Dashboard\Classes;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Menu;
 
 use App\Modules\Admin\Menu\Models\Menu as MenuModel;
 
 class Base extends Controller
 {
+
     protected $template;
     protected $user;
     protected $title;
@@ -33,74 +40,66 @@ class Base extends Controller
         });
     }
 
-    protected function renderOutput ()
-    {
+    protected function renderOutput() {
+
         $this->vars = Arr::add($this->vars, 'content', $this->content);
 
         $menu = $this->getMenu();
 
-//        dd($menu);
 
         $this->sidebar = view('Admin::layouts.parts.sidebar')->with([
             'menu' => $menu,
-            'user' => $this->user
+            'user'=>$this->user
         ])->render();
-
         $this->vars = Arr::add($this->vars, 'sidebar', $this->sidebar);
-//        dd($this->vars);
 
         return view($this->template)->with($this->vars);
     }
 
-    private function getMenu()
-    {
-        return Menu::make('menuRenderer', function ($m){
-            foreach (MenuModel::menuByType(MenuModel::MENU_TYPE_ADMIN)->get() as $item)
-            {
+    private function getMenu() {
+        return Menu::make('menuRenderer', function($m) {
+            foreach (MenuModel::menuByType(MenuModel::MENU_TYPE_ADMIN)->get() as $item) {
                 $path = $item->path;
-
-                if ($path && $this->checkRoute($path))
-                {
+                if($path && $this->checkRoute($path)) {
                     $path = route($path);
                 }
 
-                if ($item->parent == 0)
-                {
-                    $m->add($item->title, $path)->id($item->id)->data('perrmissions', []);
+                if($item->parent == 0) {
+                    $m->add($item->title, $path)->id($item->id)->data('permissions',$this->getPermissions($item));
                 }
-                else
-                {
-                    if ($m->find($item->parent))
-                    {
-                        $m->find($item->parent)->add($item->title, $path)->id($item->id)->data('perrmissions', []);;
+                else {
+                    if($m->find($item->parent)) {
+                        $m->find($item->parent)->add($item->title, $path)->id($item->id)->data('permissions',$this->getPermissions($item));
                     }
                 }
 
 
-
-               //$title = $item->title;
             }
-        })->filter(function ($item){
-            /// to do
-            return true;
+        })->filter(function($item) {
+            if($this->user && $this->user->canDo($item->data('permissions'))) {
+                return true;
+            }
+            return false;
         });
     }
 
-
     private function checkRoute($path)
     {
-        $routes = Route::getRoutes()->getRoutes(); # return all routes
+        $routes = \Route::getRoutes()->getRoutes();
 
-        foreach ($routes as $route)
-        {
-            if ($route->getName() == $path)
-            {
+        foreach ($routes as $route) {
+            if($route->getName() == $path) {
                 return true;
             }
         }
 
         return false;
-
     }
 
+    private function getPermissions($item)
+    {
+        return $item->perms->map(function($item) {
+            return $item->alias;
+        })->toArray();
+    }
 }

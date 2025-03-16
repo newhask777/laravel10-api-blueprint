@@ -3,19 +3,21 @@
 namespace App\Modules\Admin\Menu\Models;
 
 use App\Modules\Admin\Role\Models\Permission;
+use App\Modules\Admin\Role\Models\Traits\UserRoles;
 use App\Modules\Admin\User\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Menu extends Model
 {
-    use HasFactory;
+    use UserRoles;
 
     const MENU_TYPE_FRONT = 'front';
     const MENU_TYPE_ADMIN = 'admin';
 
     //perms
-    public function perms() {
+    public function perms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
         return $this->belongsToMany(Permission::class, 'permission_menu');
     }
 
@@ -29,8 +31,7 @@ class Menu extends Model
                 });
 
                 $q->whereIn('id', $arr->toArray());
-            })
-        ;
+            });
     }
 
     public function scopeMenuByType($query, $type)

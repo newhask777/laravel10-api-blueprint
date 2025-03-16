@@ -3,6 +3,7 @@
 namespace App\Modules\Admin\Role\Requsts;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RoleRequest extends FormRequest
 {
@@ -16,6 +17,6 @@ class RoleRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return Auth::user()->canDo(['super_admin', 'rolles_access']);
     }
 }

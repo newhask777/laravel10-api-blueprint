@@ -28,7 +28,7 @@ class Role extends Model
     }
 
 
-    public function savePermissions($permissions): array|int
+    public function savePermissions($permissions)
     {
 //        dd($permissions);
         if (!empty($permissions))

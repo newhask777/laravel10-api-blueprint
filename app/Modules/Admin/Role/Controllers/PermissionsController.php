@@ -32,7 +32,7 @@ class PermissionsController extends Base
         $perms = Permission::all();
         $roles = Role::all();
 
-//        dd($perms);
+//        dd($roles);
 
         $this->title = "Title Perm Index";
 
@@ -69,8 +69,8 @@ class PermissionsController extends Base
 
         $this->service->save($request);
 
-        return back()->with([
-            "massage" => "Permission has been created successfully.",
+        return  back()->with([
+            'message' => __('Success')
         ]);
     }
 

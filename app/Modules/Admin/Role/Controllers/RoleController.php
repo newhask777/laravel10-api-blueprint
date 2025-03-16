@@ -7,6 +7,7 @@ use App\Modules\Admin\Role\Models\Role;
 use App\Modules\Admin\Role\Requsts\RoleRequest;
 use App\Modules\Admin\Role\Services\RoleService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Base
 {

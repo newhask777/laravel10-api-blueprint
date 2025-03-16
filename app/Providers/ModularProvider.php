@@ -46,7 +46,7 @@ class ModularProvider extends ServiceProvider
                             });
 
                         Route::prefix('api')
-                            ->middleware('auth:api')
+                            ->middleware('api')
                             ->group(function() use($mod, $sub, $relativePath, $path) {
                                 $this->getApiRoutes($mod, $sub, $relativePath, $path);
                             });
