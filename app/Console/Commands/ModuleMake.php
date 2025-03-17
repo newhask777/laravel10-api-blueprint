@@ -17,13 +17,16 @@ class ModuleMake extends Command
      * @var string
      */
     protected $signature = 'make:module {name}
-                                                   {--all}
-                                                   {--migration}
-                                                   {--vue}
-                                                   {--view}
-                                                   {--controller}
-                                                   {--model}
-                                                   {--api}';
+                                        {--all}
+                                        {--migration}
+                                        {--vue}
+                                        {--view}
+                                        {--controller}
+                                        {--model}
+                                        {--api}';
+
+    // TODO: add middleware, requests, policies, services, seeds, resources, events, DTO ...
+
 
     /**
      * The console command description.

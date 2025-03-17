@@ -65,11 +65,13 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Modules\Admin\User\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse
      */
     public function show(User $user)
     {
-        //
+        return ResponseServise::sendJsonResponse(true, 200, [
+            'user' => $user->toArray()
+        ]);
     }
 
     /**
