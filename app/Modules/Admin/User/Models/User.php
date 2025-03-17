@@ -12,7 +12,7 @@ class User extends AuthUser
     use HasFactory, HasApiTokens, UserRoles;
 
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'phone', 'status'
+        'firstname', 'lastname', 'email', 'phone', 'password', 'status'
     ];
 
     protected $hidden = [

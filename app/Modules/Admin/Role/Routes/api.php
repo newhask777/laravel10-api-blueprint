@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Modules\Admin\Role\Controllers\Api\RoleController;
 
-Route::group(['prefix' => 'roles',  'middleware' => []], function(){
+Route::group(['prefix' => 'roles',  'middleware' => ['auth:api']], function(){
     Route::get('/', [RoleController::class, 'index'])->name('api.roles.index');
     Route::post('/', [RoleController::class, 'store'])->name('api.roles.store');
     Route::get('/{role}', [RoleController::class, 'show'])->name('api.roles.read');
