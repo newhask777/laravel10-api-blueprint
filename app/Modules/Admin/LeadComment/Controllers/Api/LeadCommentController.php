@@ -5,9 +5,17 @@ namespace App\Modules\Admin\LeadComment\Controllers\Api;
 use App\Modules\Admin\LeadComment\Models\LeadComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Modules\Admin\LeadComment\Services\LeadCommentService;
 
 class LeadCommentController extends Controller
 {
+    private $service;
+
+    public function __construct()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -9,6 +9,7 @@ use App\Modules\Admin\Unit\Models\Unit;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Lavary\Menu\Collection;
 
@@ -68,5 +69,10 @@ class Lead extends Model
             ])
             ->orderBy('created_at')
             ->get();
+    }
+
+    public function statuses(): BelongsToMany
+    {
+        return $this->belongsToMany(Status::class);
     }
 }
