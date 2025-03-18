@@ -9,70 +9,71 @@ use App\Modules\Admin\Unit\Models\Unit;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Lavary\Menu\Collection;
 
 class Lead extends Model
 {
     use HasFactory;
+
+    const DONE_STATUS = 3;
 
     protected $fillable = [
         'link',
         'phone',
         'source_id',
         'unit_id',
-        'user_id',
         'is_processed',
         'is_express_delivery',
-        'is_add_sale'
+        'is_add_sale',
     ];
 
-    public function source(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
+    public function source() {
         return $this->belongsTo(Source::class);
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
+    public function unit() {
         return $this->belongsTo(Unit::class);
     }
-
-    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
+    public function status() {
         return $this->belongsTo(Status::class);
     }
 
-    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(LeadComment::class);
+    public function comments() {
+        return $this->hasmany(LeadComment::class);
     }
 
-    public function lastComment()
-    {
-//        return $this->comments()->latest()->first();
+    public function lastComment() {
         return $this->comments()->where('comment_value', '!=', NULL)->orderBy('id','desc')->first();
     }
 
     public function getLeads()
     {
-        return $this->with(['source', 'unit', 'user', 'status'])
-            ->whereBetween('status_id', [1,2])
-            ->orWhere([
-                ['status_id', 3],
-                ['updated_at', '>', \DB::raw('DATE_SUB(NOW(), INTERVAL 24 HOUR)')]
-            ])
-            ->orderBy('created_at')
-            ->get();
+
+        return $this->
+        with(['source','unit','status'])->
+        whereBetween('status_id',[1,2])->
+        orWhere([
+            ['status_id', 3],
+            ['updated_at', '>' ,\DB::raw('DATE_SUB(NOW(), INTERVAL 24 HOUR)')]
+        ])->
+        orderBy('created_at')->get();
     }
 
-    public function statuses(): BelongsToMany
-    {
+    public function statuses() {
         return $this->belongsToMany(Status::class);
     }
+
+    public function getArchive()
+    {
+        return $this->
+        with(['statuses','source','unit'])->
+        where('status_id', self::DONE_STATUS)->
+        where('updated_at','<',\DB::raw('DATE_SUB(NOW(), INTERVAL 24 HOUR)'))->
+        orderBy('updated_at','DESC')->
+        paginate(config('settings.pagination'));
+    }
+
 }
