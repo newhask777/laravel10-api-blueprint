@@ -2,10 +2,10 @@
 
 namespace App\Modules\Admin\Analitics\Controllers\Api;
 
-
-use App\Modules\Admin\Analitics\Models\Analitic;
 use App\Modules\Admin\Analitics\Services\AnaliticsDataService;
 use App\Modules\Admin\Lead\Models\Lead;
+use App\Modules\Admin\User\Models\User;
+
 use App\Services\Response\ResponseServise;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,7 +28,7 @@ class AnaliticsController extends Controller
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Contracts\Routing\ResponseFactory
     {
         //
         $this->authorize('viewAnalitic', Lead::class);
@@ -43,71 +43,5 @@ class AnaliticsController extends Controller
                 'items' => $leadsData
             ]
         );
-    }
-
-    /**
-     * Create of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Modules\Admin\Analitics\Models\Analitic  $analitic
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Analitic $analitic)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Modules\Admin\Analitics\Models\Analitic  $analitic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Analitic $analitic)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Modules\Admin\Analitics\Models\Analitic  $analitic
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Analitic $analitic)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Modules\Admin\Analitics\Models\Analitic  $analitic
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Analitic $analitic)
-    {
-        //
     }
 }

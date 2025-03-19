@@ -196,12 +196,15 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
         /*
          *  Custom Providers
          */
         App\Providers\ModularProvider::class,
         App\Services\Localization\LocalizationServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Services\Date\Provider\DateCheckServiceProvider::class,
 
     ],
 
@@ -219,6 +222,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Menu'      => Lavary\Menu\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'DateService' => \App\Services\Date\Facade\DateServiceFacade::class,
     ])->toArray(),
 
 ];
