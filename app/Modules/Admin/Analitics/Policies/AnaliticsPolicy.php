@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Modules\Admin\Analitics\Policies;
+
+use App\Modules\Admin\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+trait AnaliticsPolicy
+{
+    public function viewAnalitic(User $user) {
+        return $user->canDo(['super_admin','analitics_access']);
+    }
+}

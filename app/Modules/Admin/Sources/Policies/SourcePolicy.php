@@ -3,9 +3,11 @@
 namespace App\Modules\Admin\Sources\Policies;
 
 use App\Modules\Admin\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SourcePolicy
 {
+    use HandlesAuthorization;
     /**
      * Create a new policy instance.
      */

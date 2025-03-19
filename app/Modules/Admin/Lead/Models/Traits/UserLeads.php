@@ -4,11 +4,13 @@ namespace App\Modules\Admin\Lead\Models\Traits;
 
 use App\Modules\Admin\Lead\Models\Lead;
 use App\Modules\Admin\LeadComment\Models\LeadComment;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
-trait UserLeadsTrait
+trait UserLeads
 {
+    use HandlesAuthorization;
     public function leads(): HasMany
     {
         return $this->hasMany(Lead::class);

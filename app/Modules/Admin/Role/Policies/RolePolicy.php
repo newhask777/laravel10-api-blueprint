@@ -6,10 +6,12 @@ namespace App\Modules\Admin\Role\Policies;
 
 
 use App\Modules\Admin\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 
 class RolePolicy
 {
+    use HandlesAuthorization;
     /**
      * Determine whether the user can view any models.
      */

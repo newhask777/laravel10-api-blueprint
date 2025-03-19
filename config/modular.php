@@ -14,6 +14,7 @@ return [
 
     'modules' => [
         'Admin' => [
+            'Analitics',
             'LeadComment',
             'Status',
             'Unit',
