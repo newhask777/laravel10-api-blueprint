@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Services\Response\ResponseServise;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -42,7 +45,21 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            //
+            //dump($e);
         });
+
+//        $this->renderable(function (AccessDeniedHttpException  $e, $request) {
+//           if ($request->wantsJson()) {
+//               return ResponseServise::notFound();
+//           }
+//        });
+//
+//        $this->renderable(function (AuthenticationException $e, $request) {
+//
+//            if ($request->wantsJson()) {
+//                return ResponseServise::notFound();
+//            }
+//
+//        });
     }
 }
