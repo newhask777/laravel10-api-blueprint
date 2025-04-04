@@ -16,15 +16,6 @@ trait UserLeads
         return $this->hasMany(Lead::class);
     }
 
-    public function tasks()
-    {
-        return true;
-    }
-
-    public function responsibleTask()
-    {
-        return true;
-    }
 
     public function comments(): HasMany
     {

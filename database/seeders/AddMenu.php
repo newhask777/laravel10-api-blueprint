@@ -100,7 +100,7 @@ class AddMenu extends Seeder
                 'sort_order' => 100,
             ],
             [
-                'title' => 'Tasks',
+                'title' => 'Task',
                 'path' => 'tasks',
                 'parent' => 0,
                 'type' => 'front',
