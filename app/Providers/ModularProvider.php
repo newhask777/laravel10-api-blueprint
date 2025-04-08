@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\Localization\LocalizationService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 
 class ModularProvider extends ServiceProvider
@@ -48,6 +49,7 @@ class ModularProvider extends ServiceProvider
                         Route::prefix('api')
                             ->middleware('api')
                             ->group(function() use($mod, $sub, $relativePath, $path) {
+//                                Passport::routes();
                                 $this->getApiRoutes($mod, $sub, $relativePath, $path);
                             });
                     }

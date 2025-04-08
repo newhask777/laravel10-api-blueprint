@@ -30,6 +30,7 @@ class UserController extends Controller
         $this->authorize('view', new User());
 
         $users = $this->service->getUsers();
+        //dd($users->toArray());
 
         return ResponseServise::sendJsonResponse(true, 200, [
             'users' => $users->toArray()

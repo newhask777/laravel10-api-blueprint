@@ -14,11 +14,14 @@ class UserServise
     {
         $usersBuilder = User::with('roles');
 
+
+
         if($status) {
             $usersBuilder->where('status',(string)$status);
         }
 
         $users  = $usersBuilder->get();
+
 
         $users->transform(function ($item) {
             $item->rolename = '';
@@ -29,6 +32,7 @@ class UserServise
 
             return $item;
         });
+//        dd($users);
 
         return $users;
     }

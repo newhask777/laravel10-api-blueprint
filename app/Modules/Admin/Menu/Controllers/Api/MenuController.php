@@ -4,6 +4,7 @@ namespace App\Modules\Admin\Menu\Controllers\Api;
 
 use App\Modules\Admin\Menu\Models\Menu;
 use App\Modules\Admin\Role\Models\Traits\UserRoles;
+use App\Modules\Admin\User\Models\User;
 use App\Services\Response\ResponseServise;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,9 +19,10 @@ class MenuController extends Controller
      */
     public function index()
     {
+//        sleep(2);
 
         return ResponseServise::sendJsonResponse(true, 200, [], [
-            "menu" => (Menu::frontMenu(Auth::user())->get())->toArray(),
+            "items" => (Menu::frontMenu(Auth::user())->get())->toArray(),
         ]);
     }
 

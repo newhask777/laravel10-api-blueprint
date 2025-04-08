@@ -34,4 +34,10 @@ class ResponseServise
     {
         return self::sendJsonResponse(false, 404, [], []);
     }
+
+    public static function noAuthorize()
+    {
+        return self::sendJsonResponse(false, 401, [], []);
+    }
+
 }

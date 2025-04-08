@@ -40,7 +40,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-
+        Passport::tokensExpireIn(Carbon::now()->addSeconds(3));
+        Passport::refreshTokensExpireIn(Carbon::now()->addDays(4));
 
 //        Passport::loadKeysFrom(__DIR__ . '/storage/oauth-private.key');
     }

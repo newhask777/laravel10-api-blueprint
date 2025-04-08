@@ -36,8 +36,8 @@ class UserRequest extends ApiRequest
         ];
     }
 
-    public function authorize(): bool
-    {
-        return Auth::user()->canDo(['super_admin', 'user_access']);
-    }
+//    public function authorize(): bool
+//    {
+//        return Auth::user()->canDo(['super_admin', 'user_access']);
+//    }
 }

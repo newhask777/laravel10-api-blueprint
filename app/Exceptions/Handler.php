@@ -57,7 +57,7 @@ class Handler extends ExceptionHandler
 //        $this->renderable(function (AuthenticationException $e, $request) {
 //
 //            if ($request->wantsJson()) {
-//                return ResponseServise::notFound();
+//                return ResponseServise::noAuthorize();
 //            }
 //
 //        });
