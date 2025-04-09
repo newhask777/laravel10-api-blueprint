@@ -32,7 +32,7 @@ class SourcesController extends Controller
         //
         $this->authorize('view', new Source());
 
-        return ResponseServise::sendJsonResponse(true, 200,[],[
+        return ResponseServise::sendJsonResponse(true, 200,[
             'items' =>  $this->service->getSources()
         ]);
     }

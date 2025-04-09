@@ -33,7 +33,6 @@ class LoginController extends Controller
         return ResponseServise::sendJsonResponse(
             true,
             200,
-            [],
             [
                 'api_token' => $tokenResult->accessToken,
                 'user' => $user,

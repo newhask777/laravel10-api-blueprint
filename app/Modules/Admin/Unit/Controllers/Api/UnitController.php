@@ -29,7 +29,7 @@ class UnitController extends Controller
     {
         //
 
-        return ResponseServise::sendJsonResponse(true, 200,[],[
+        return ResponseServise::sendJsonResponse(true, 200,[
             'items' =>  $this->service->getUnits()
         ]);
     }

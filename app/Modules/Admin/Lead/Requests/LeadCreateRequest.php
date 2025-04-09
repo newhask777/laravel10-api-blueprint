@@ -27,7 +27,7 @@ class LeadCreateRequest extends ApiRequest
             'phone' => 'required_without:link',
             'source_id' => 'required',
             'unit_id' => 'required',
-            'user_id' => 'required',
+            'user_id' => 'nullable',
             'is_processed' => 'required',
 
         ];

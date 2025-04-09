@@ -21,7 +21,7 @@ class MenuController extends Controller
     {
 //        sleep(2);
 
-        return ResponseServise::sendJsonResponse(true, 200, [], [
+        return ResponseServise::sendJsonResponse(true, 200, [
             "items" => (Menu::frontMenu(Auth::user())->get())->toArray(),
         ]);
     }

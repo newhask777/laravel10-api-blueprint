@@ -37,7 +37,7 @@ class LeadController extends Controller
 
         $result = $this->service->getLeads();
 
-        return ResponseServise::sendJsonResponse(true, 200, [],[
+        return ResponseServise::sendJsonResponse(true, 200, [
             'items' => $result
         ]);
     }
@@ -65,7 +65,7 @@ class LeadController extends Controller
 
         $lead = $this->service->store($request, Auth::user());
 
-        return ResponseServise::sendJsonResponse(true, 200, [],[
+        return ResponseServise::sendJsonResponse(true, 200, [
             'item' => $lead
         ]);
 
@@ -162,6 +162,14 @@ class LeadController extends Controller
 
         return ResponseServise::sendJsonResponse(true, 200, [],[
             'item' => $lead
+        ]);
+
+    }
+
+    public function getAddSaleCount() {
+        $count = $this->service->getAddSaleCount();
+        return ResponseServise::sendJsonResponse(true, 200, [
+            'number' => $count
         ]);
 
     }

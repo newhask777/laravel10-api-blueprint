@@ -15,7 +15,7 @@ use App\Modules\Admin\User\Models\User;
 use App\Modules\Admin\User\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Carbon;
-use Laravel\Passport\Passport;
+//use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -40,8 +40,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::tokensExpireIn(Carbon::now()->addSeconds(3));
-        Passport::refreshTokensExpireIn(Carbon::now()->addDays(4));
+//        Passport::tokensExpireIn(Carbon::now()->addSeconds(3));
+//        Passport::refreshTokensExpireIn(Carbon::now()->addDays(4));
 
 //        Passport::loadKeysFrom(__DIR__ . '/storage/oauth-private.key');
     }

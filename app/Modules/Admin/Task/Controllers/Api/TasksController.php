@@ -69,7 +69,7 @@ class TasksController extends Controller
         //check access
         $this->authorize('save', Task::class);
 
-        return ResponseServise::sendJsonResponse(true, 200, [],[
+        return ResponseServise::sendJsonResponse(true, 200, [
             'item' => $this->service->store($request, Auth::user())
         ]);
 

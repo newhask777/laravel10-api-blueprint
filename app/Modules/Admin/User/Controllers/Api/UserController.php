@@ -6,7 +6,6 @@ use App\Modules\Admin\User\Models\User;
 use App\Modules\Admin\User\Requests\UserRequest;
 use App\Modules\Admin\User\Services\UserServise;
 use App\Services\Response\ResponseServise;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -30,10 +29,10 @@ class UserController extends Controller
         $this->authorize('view', new User());
 
         $users = $this->service->getUsers();
-        //dd($users->toArray());
+//        dd($users->toArray());
 
         return ResponseServise::sendJsonResponse(true, 200, [
-            'users' => $users->toArray()
+            'items' => $users->toArray()
         ]);
     }
 
