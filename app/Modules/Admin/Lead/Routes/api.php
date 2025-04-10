@@ -15,4 +15,6 @@ Route::group(['prefix' => 'leads',  'middleware' => ['auth:api']], function(){
     Route::put('/update/quality/{lead}', [LeadController::class, 'updateQuality'])->name('api.leads.update.quality');
 
     Route::get('/addSale/count', [LeadController::class, 'getAddSaleCount'])->name('api.leads.addSale.count');
+
+    Route::get('/history/{lead}', [LeadController::class, 'comments'])->name('api.leads.comments');
 });

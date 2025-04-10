@@ -174,4 +174,16 @@ class LeadController extends Controller
 
     }
 
+    public function comments(Lead $lead)
+    {
+        $this->authorize('view', Lead::class);
+
+        return ResponseServise::sendJsonResponse(true, 200, [
+            'items' => $lead->comments->transform(function ($item) {
+                $item->load('status', 'user');
+                return $item;
+            })->toArray()
+        ]);
+    }
+
 }
